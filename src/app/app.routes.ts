@@ -9,8 +9,5 @@ export const routes: Routes = [
     path: 'registrar',
     loadComponent: () => import('./registrar/registrar.page').then( m => m.RegistrarPage)
   },
-  {
-    path: 'qrcode',
-    loadComponent: () => import('./qrcode/qrcode.component').then( m => m.QrcodeComponent)
-  }
+
 ];
