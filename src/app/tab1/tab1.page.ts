@@ -3,6 +3,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonGrid, IonRow
 import { ExploreContainerComponent } from '../explore-container/explore-container.component';
 import { calendar, bookmark } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -12,7 +13,11 @@ import { addIcons } from 'ionicons';
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, ExploreContainerComponent, IonIcon, IonButton, IonGrid, IonRow],
 })
 export class Tab1Page {
-  constructor() {
+  constructor(private router: Router) {
     addIcons({ calendar, bookmark });
+  }
+
+  goToRegistrar() {
+    this.router.navigate(['/registrar']);
   }
 }
