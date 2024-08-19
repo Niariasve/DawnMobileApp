@@ -1,0 +1,32 @@
+/* Estilo del componente principal */
+:host {
+    display: flex; /* Asegura que el componente ocupe el espacio completo disponible */
+    justify-content: center; /* Centra el QR Code horizontalmente */
+    align-items: center; /* Centra el QR Code verticalmente */
+    height: 100vh; /* Ocupa toda la altura de la vista para centrar verticalmente */
+
+  
+
+  h1 {
+    font-size: 24px; 
+    color: #ffffff;
+    text-align: center; 
+    margin-bottom: 10px; 
+  }
+  
+ 
+  h2 {
+    font-size: 20px; 
+    color: #ffffff;
+    text-align: center; 
+    margin-bottom: 20px; 
+  }
+  
+  /* Estilo del QR Code */
+  qrcode {
+    border: 5px solid #072e55; /* Añade un borde azul alrededor del QR Code */
+    border-radius: 8px; /* Redondea los bordes del QR Code */
+    padding: 10px; /* Añade espacio interno alrededor del QR Code */
+    background-color: #ffffff; /* Fondo claro para el QR Code */
+  }
+}
