@@ -7,11 +7,26 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-grid [fixed]="true">
+    <ion-row class="mt-3 ion-justify-content-center ion-align-items-center">
+      <div class="boton">
+        <ion-icon name="calendar" size="large"></ion-icon>
+        <p>Registrar una visita</p>
+      </div>
+    </ion-row>
+
+    <ion-row class="mt-5 ion-justify-content-center ion-align-items-center">
+      <div class="boton">
+        <ion-icon name="bookmark" size="large"></ion-icon>
+        <p>Historial de visitas</p>
+      </div>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,0 +1,31 @@
+.mt-5 {
+    margin-top: 50px;
+}
+
+.mt-3 {
+    margin-top: 25px;
+}
+
+.boton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height:200px;
+    background-color: #1651bc;
+    border-radius: 25px;
+
+    transition: background-color .3s ease;
+    transition: scale .3s ease;
+
+    &:hover {
+        background-color: darken($color: #1651bc, $amount: 15%);
+        scale: 1.1;
+        cursor: pointer
+    }
+
+    p {
+        font-weight: bold;
+    }
+}
