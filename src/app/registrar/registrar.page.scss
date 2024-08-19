@@ -1,0 +1,12 @@
+.formulario {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    ion-input {
+        border-bottom: 1px solid gray;
+        margin: 0 0 25px 0;
+    }
+
+}
