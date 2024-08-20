@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent,
   IonInput,
-  IonLabel, IonList, IonItem
+  IonLabel, IonList, IonItem, IonGrid, IonRow, IonCol
 } from '@ionic/angular/standalone';
 
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +23,7 @@ import { ProviderService } from '../services/provider.service';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonIcon,
      IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent,
     IonInput,
-    IonLabel, IonList, IonItem, HttpClientModule, ReactiveFormsModule],
+    IonLabel, IonList, IonItem, HttpClientModule, ReactiveFormsModule, IonGrid, IonRow, IonCol],
   providers: [ProviderService],
 })
 export class RegistrarPage implements OnInit {
@@ -34,15 +34,26 @@ export class RegistrarPage implements OnInit {
     extras: null
   })
 
+  extraColumns: number[] = [];
+
   constructor(private navCtrl: NavController, private dataProvider: ProviderService, private formBuilder: FormBuilder) {
     addIcons({ arrowBack });
   }
 
   onSubmit() {
-
+    console.log(this.checkoutForm.value)
   }
 
   ngOnInit() {
+    this.checkoutForm.get('extras')?.valueChanges.subscribe((value) => {
+      this.updateExtraColumns(value);
+    })
   }
 
+  updateExtraColumns(extras: number | null) {
+    this.extraColumns = [];
+    if(extras && extras > 0 && extras < 10) {
+      this.extraColumns = Array(extras).fill(0).map((_,index) => index + 1);
+    }
+  }
 }

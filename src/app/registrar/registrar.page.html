@@ -4,7 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>
-      registrar
+      Registrar Visita
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -26,13 +26,69 @@
       </ion-card-header>
 
       <ion-card-content>
-        <form class="formulario" [formGroup]="checkoutForm">
-          <label for="actividad">Actividad:</label>
-          <ion-input type="text" formControlName="actividad"></ion-input>
-          <label for="fecha">Fecha:</label>
-          <ion-input type="date" formControlName="fecha"></ion-input>
-          <ion-input type="select"></ion-input>
+        <form class="formulario" [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+          <ion-input 
+            label="Actividad:" 
+            label-placement="floating" 
+            fill="outline" 
+            type="text" 
+            formControlName="actividad">
+          </ion-input>
+
+          <ion-input 
+            label="Fecha:"
+            label-placement="floating"
+            type="date" 
+            formControlName="fecha">
+          </ion-input>
+          
+          <ion-input 
+            label="Personas Extra:"
+            label-placement="floating"
+            type="number" 
+            formControlName="extras">
+          </ion-input>
+          <ion-button type="submit">Enviar</ion-button>
         </form>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-title>
+          Información Adicional
+        </ion-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <!-- Este row -->
+          <ion-row class="ion-justify-content-center" *ngFor="let col of extraColumns">           
+              <div class="extra">
+                <small>Extra: {{col}}</small>
+                <form id="extra-{{col}}" class="formulario">
+                  <div class="campo-na">
+                    <ion-input
+                      label="Nombre:"
+                      label-placement="floating"
+                      type="text">
+                    </ion-input>
+                    <ion-input
+                      label="Apellido:"
+                      label-placement="floating"
+                      type="text">
+                    </ion-input>
+                  </div>
+                  <ion-input
+                      label="Cédula:"
+                      label-placement="floating"
+                      type="text">
+                  </ion-input>
+                </form>
+              </div>           
+          </ion-row>
+        </ion-grid>
       </ion-card-content>
     </ion-card>
   </ion-header>
