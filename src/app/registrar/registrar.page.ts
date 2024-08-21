@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormArray, FormGroup, FormsModule, Validators } from '@angular/forms';
 import {
   IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonIcon, IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent,
   IonInput,
@@ -31,9 +31,14 @@ export class RegistrarPage implements OnInit {
   checkoutForm = this.formBuilder.group({
     actividad: ['', Validators.required],
     fecha: [null, Validators.required],
-    extras: [null, [Validators.required, Validators.min(0), Validators.max(10)]],
-    extrasData: Array([])
+    hora: [null, Validators.required],
+    extras: [null, [Validators.required, Validators.min(0), Validators.max(11)]],
+    extrasData: this.formBuilder.array([])
   })
+
+  get extrasData() {
+    return this.checkoutForm.get('extrasData') as FormArray;
+  }
 
   extraColumns: number[] = [];
 
@@ -42,23 +47,10 @@ export class RegistrarPage implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.checkoutForm.value);
     if (this.checkoutForm.valid) {
-      console.log(this.checkoutForm.value);
-      for (let i = 1; i <= Number(this.checkoutForm.value.extras); i++) {
-        const nombre = document.querySelector(`#nombre-${i}`) as HTMLInputElement;
-        const apellido = document.querySelector(`#apellido-${i}`) as HTMLInputElement;
-        const cedula = document.querySelector(`#cedula-${i}`) as HTMLInputElement;
-        console.log(nombre.value);
-        console.log(apellido.value);
-        console.log(cedula.value);
-
-        const data: any = {
-          nombre: nombre.value,
-          apellido: apellido.value,
-          cedula: cedula.value
-        }
-        console.log(this.checkoutForm.value.extrasData);
-      }
+      const extrasArray = this.checkoutForm.value.extrasData;
+      console.log('Datos extra: ', extrasArray);
     } else {
       this.checkoutForm.markAllAsTouched();
     }
@@ -72,8 +64,20 @@ export class RegistrarPage implements OnInit {
 
   updateExtraColumns(extras: number | null) {
     this.extraColumns = [];
-    if(extras && extras > 0 && extras < 10) {
+    this.extrasData.clear();
+    if(extras && extras > 0 && extras <= 10) {
       this.extraColumns = Array(extras).fill(0).map((_,index) => index + 1);
+      for (let i = 0; i < extras; i++) {
+        this.extrasData.push(this.createExtraForm());
+      }
     }
+  }
+
+  createExtraForm(): FormGroup {
+    return this.formBuilder.group({
+      nombre: ['', Validators.required],
+      apellido: ['', Validators.required],
+      cedula: ['', Validators.required],
+    })
   }
 }

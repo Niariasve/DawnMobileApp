@@ -44,6 +44,14 @@
             type="date" 
             formControlName="fecha">
           </ion-input>
+
+          <ion-input 
+            label="Hora:"
+            label-placement="floating"
+            fill="outline" 
+            type="time" 
+            formControlName="hora">
+          </ion-input>
           
           <ion-input 
             label="Personas Extra:"
@@ -53,51 +61,37 @@
             formControlName="extras">
           </ion-input>
           <ion-button type="submit">Enviar</ion-button>
-        </form>
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card>
-      <ion-card-header>
-        <ion-title>
-          Información Adicional
-        </ion-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        <ion-grid>
-          <!-- Este row -->
-          <ion-row class="ion-justify-content-center" *ngFor="let col of extraColumns">           
+          <ion-grid formArrayName="extrasData">
+            <ion-row class="ion-justify-content-center" *ngFor="let extra of extrasData.controls; let i = index" [formGroupName]="i">
               <div class="extra">
-                <small>Extra: {{col}}</small>
-                <form id="extra-{{col}}" class="formulario">
-                  <div class="campo-na">
-                    <ion-input
-                      id="nombre-{{col}}"
-                      label="Nombre:"
-                      label-placement="floating"
-                      fill="solid"
-                      type="text">
-                    </ion-input>
-                    <ion-input
-                      id="apellido-{{col}}"
-                      label="Apellido:"
-                      label-placement="floating"
-                      fill="solid"
-                      type="text">
-                    </ion-input>
-                  </div>
+                <small>Extra: {{ i + 1 }}</small>
+                <div class="campo-na">
                   <ion-input
-                    id="cedula-{{col}}"
+                    label="Nombre:"
+                    label-placement="floating"
+                    fill="solid"
+                    type="text"
+                    formControlName="nombre">
+                  </ion-input>
+                  <ion-input
+                    label="Apellido:"
+                    label-placement="floating"
+                    fill="solid"
+                    type="text"
+                    formControlName="apellido">
+                  </ion-input>
+                </div>
+                <ion-input
                     label="Cédula:"
                     label-placement="floating"
                     fill="solid"
-                    type="text">
-                  </ion-input>
-                </form>
-              </div>           
-          </ion-row>
-        </ion-grid>
+                    type="text"
+                    formControlName="cedula">
+                </ion-input>
+              </div>
+            </ion-row>
+          </ion-grid>
+        </form>
       </ion-card-content>
     </ion-card>
 </ion-content>
