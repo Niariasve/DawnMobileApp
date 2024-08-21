@@ -51,6 +51,10 @@ export class RegistrarPage implements OnInit {
     if (this.checkoutForm.valid) {
       const extrasArray = this.checkoutForm.value.extrasData;
       console.log('Datos extra: ', extrasArray);
+      this.dataProvider.postResponse(this.checkoutForm.value).subscribe(response => {
+        this.checkoutForm.reset();
+        console.log(response);
+      })
     } else {
       this.checkoutForm.markAllAsTouched();
     }
