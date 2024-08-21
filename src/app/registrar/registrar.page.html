@@ -17,6 +17,7 @@
       </ion-buttons>
       <ion-title size="large">Registrar Visita</ion-title>
     </ion-toolbar>
+  </ion-header>
 
     <ion-card>
       <ion-card-header>
@@ -39,6 +40,7 @@
           <ion-input 
             label="Fecha:"
             label-placement="floating"
+            fill="outline" 
             type="date" 
             formControlName="fecha">
           </ion-input>
@@ -46,6 +48,7 @@
           <ion-input 
             label="Personas Extra:"
             label-placement="floating"
+            fill="outline" 
             type="number" 
             formControlName="extras">
           </ion-input>
@@ -70,20 +73,26 @@
                 <form id="extra-{{col}}" class="formulario">
                   <div class="campo-na">
                     <ion-input
+                      id="nombre-{{col}}"
                       label="Nombre:"
                       label-placement="floating"
+                      fill="solid"
                       type="text">
                     </ion-input>
                     <ion-input
+                      id="apellido-{{col}}"
                       label="Apellido:"
                       label-placement="floating"
+                      fill="solid"
                       type="text">
                     </ion-input>
                   </div>
                   <ion-input
-                      label="Cédula:"
-                      label-placement="floating"
-                      type="text">
+                    id="cedula-{{col}}"
+                    label="Cédula:"
+                    label-placement="floating"
+                    fill="solid"
+                    type="text">
                   </ion-input>
                 </form>
               </div>           
@@ -91,6 +100,4 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-  </ion-header>
-  
 </ion-content>
