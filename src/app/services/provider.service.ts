@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Data } from '../interfaces/data';
 
 import { HttpClient } from '@angular/common/http';
 
@@ -12,8 +13,7 @@ export class ProviderService {
   constructor(private http: HttpClient) { }
 
   getResponse() {
-    return this.http.get(this.url);
-  }
+    return this.http.get<Data>(this.url);  }
 
   postResponse(data: any) {
     return this.http.post(this.url, data);
