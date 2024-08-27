@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Mis Reservas 
+      Mis Reservas
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,16 +10,30 @@
 <ion-content>
   <ion-grid [fixed]="true">
     <ion-row class="mt-3 ion-justify-content-center ion-align-items-center">
-      <h1> Información de la reserva </h1>
-      </ion-row>
-      <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-        <h2>
-          Código QR
-        </h2>
-      </ion-row>
-      <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h1> Información de la Reserva </h1>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h2>
+        Código QR
+      </h2>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
 
       <qrcode [qrdata]="qrString" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
     </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h2>Actividad</h2>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h3>{{actividad}}</h3>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h2>Fecha Asignada</h2>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h3>{{fechaHora.toLocaleString()}}</h3>
+    </ion-row>
+
+
   </ion-grid>
 </ion-content>
