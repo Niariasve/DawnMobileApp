@@ -22,7 +22,6 @@ fechaHora: Date=new Date();
 
 
   constructor() {
-    this.qrString = '${actividad}${fechaHora}';
   }
 
   ngOnInit() {
@@ -54,6 +53,8 @@ fechaHora: Date=new Date();
           }
         }
         console.log("La hora mas cercana a la actual de las horas del recurso json es: ",this.fechaHora.toLocaleString());
+        this.qrString = '${actividad}${fechaHora}';
+
 
       },
       error: (err) => {
