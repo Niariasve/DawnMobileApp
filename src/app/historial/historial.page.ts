@@ -47,3 +47,6 @@ export class Historialpage {
 
 
 }
+
+
+//no te olvides de la validacion del qr activo o no 

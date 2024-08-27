@@ -10,18 +10,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ng-container *ngFor="let datum of data">
   <ion-card>
     <ion-card-header>
-      <ion-card-title>ESTOY PROBANDO</ion-card-title>
+      <ion-card-title>Visita</ion-card-title>
     </ion-card-header>
 
     <ion-card-content>
       <ion-list>
-        <ion-item *ngFor="let datum of data">
-          <ion-label>{{datum?.actividad}}</ion-label>
-          <ion-label>{{datum?.extras}}</ion-label>
-        </ion-item>
+          <ion-label>Actividad: {{datum?.actividad}} </ion-label>
+          <ion-label>Fecha: {{datum?.fecha}} </ion-label>
+          <ion-label> Personas extras:{{datum?.extras}} </ion-label>
       </ion-list>
     </ion-card-content>
   </ion-card>
+  </ng-container>
 </ion-content>
