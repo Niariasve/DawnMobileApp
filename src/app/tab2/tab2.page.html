@@ -6,34 +6,103 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
   <ion-grid [fixed]="true">
+
+    @if(loaded && actividad != "No tienes reservas"){
     <ion-row class="mt-3 ion-justify-content-center ion-align-items-center">
-      <h1> Información de la Reserva </h1>
+      <h2> Información de la Reserva </h2>
     </ion-row>
     <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-      <h2>
-        Código QR
-      </h2>
+      <h3>
+        Escanea el código QR
+      </h3>
     </ion-row>
-    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-
-      <qrcode [qrdata]="qrString" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
-    </ion-row>
-    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-      <h2>Actividad</h2>
-    </ion-row>
-    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-      <h3>{{actividad}}</h3>
-    </ion-row>
-    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-      <h2>Fecha Asignada</h2>
-    </ion-row>
-    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
-      <h3>{{fechaHora.toLocaleString()}}</h3>
+    <ion-row class=" spacing mt-12 ion-justify-content-center ion-align-items-center">
+      <qrcode [qrdata]="qrString" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
     </ion-row>
 
+    <ion-grid>
+      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <div class="info">{{actividad}}</div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="info">{{fechaHora.toLocaleDateString()}}</div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="info">{{fechaHora.toLocaleTimeString()}}</div>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <div class="titleinfo">Actividad</div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="titleinfo">Fecha</div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="titleinfo">Hora</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    }
+
+    @if(loaded && actividad == "No tienes reservas"){
+    <ion-row class="mt-3 ion-justify-content-center ion-align-items-center">
+      <h2> No tienes reservas</h2>
+    </ion-row>
+    <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
+      <ion-icon name="calendar-clear-outline" style="font-size: 180px;"></ion-icon>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <ion-col class="ion-text-center">Por favor reserva una actividad en la sección correspondiente</ion-col>
+    </ion-row>
+    }
+
+    @if(!loaded){
+
+
+    <ion-row class="mt-3 ion-justify-content-center ion-align-items-center">
+      <h2> <ion-skeleton-text [animated]="true" style="width: 250px"></ion-skeleton-text> </h2>
+    </ion-row>
+    <ion-row class="mt-12 ion-justify-content-center ion-align-items-center">
+      <h3>
+        <ion-skeleton-text [animated]="true" style="width: 200px"></ion-skeleton-text>
+      </h3>
+    </ion-row>
+    <ion-row class="spacing mt-12 ion-justify-content-center ion-align-items-center">
+      <ion-skeleton-text [animated]="true" style="width: 180px; height: 180px"></ion-skeleton-text>
+    </ion-row>
+
+    <ion-grid>
+      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <div class="info"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="info"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="info"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
+        </ion-col>
+      </ion-row>
+    
+      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
+        <ion-col size="4" class="ion-text-center">
+          <div class="titleinfo"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="titleinfo"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
+        </ion-col>
+        <ion-col size="4" class="ion-text-center">
+          <div class="titleinfo"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    }
 
   </ion-grid>
 </ion-content>
