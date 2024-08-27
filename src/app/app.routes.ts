@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { Historialpage } from './historial/historial.page';
 
 export const routes: Routes = [
   {
@@ -8,6 +9,10 @@ export const routes: Routes = [
   {
     path: 'registrar',
     loadComponent: () => import('./registrar/registrar.page').then( m => m.RegistrarPage)
+  },
+  {
+    path: 'historial',
+    loadComponent: () => import('./historial/historial.page').then( m => m.Historialpage)
   },
 
 ];

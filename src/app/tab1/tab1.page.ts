@@ -20,4 +20,8 @@ export class Tab1Page {
   goToRegistrar() {
     this.router.navigate(['/registrar']);
   }
+  
+  goToHistorial() {
+    this.router.navigate(['/historial']);
+  }
 }
