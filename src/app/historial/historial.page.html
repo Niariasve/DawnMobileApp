@@ -13,31 +13,35 @@
 
 <ion-content [fullscreen]="true">
   <ng-container *ngFor="let mes of meses | keyvalue">
-  <ion-card id="containerout">
-    <ion-card-title id= "titulo1">
-      Reservas de {{mes.key}}
-    </ion-card-title>
+    <ion-card id="containerout">
+      <ion-card-title id="titulo1">
+        Reservas de {{mes.key}}
+      </ion-card-title>
 
-  <ng-container *ngFor="let datum of mes.value">
-  <ion-card id="containerin">
-    <ion-card-content>
-      <div class="contenido">
-      <ion-card-title id="titulo2">Fecha: {{datum?.fecha | date: 'dd/MM/yyyy'}} Hora: {{datum?.hora}}</ion-card-title>
-        <ion-label>Actividad: {{datum?.actividad}} </ion-label>
-        <ion-label>Visitantes adicionales: {{datum?.extras}}</ion-label>
-      <div class="reservarbtn" (click)="goToRegistrar()">
-      <ion-label>
-        Reservar otra vez</ion-label>
-    </div>
-  </div>
-  <div class="estado">
-    <ion-label>
-      Activo
-    </ion-label>
-  </div>
-    </ion-card-content>
-  </ion-card>
+      <ng-container *ngFor="let datum of mes.value">
+        <ion-card id="containerin">
+
+          <ion-card-content>
+            <div class="contenido">
+              <ion-card-title id="titulo2">Fecha: {{datum?.fecha | date: 'dd/MM/yyyy'}} Hora:
+                {{datum?.hora}}</ion-card-title>
+              <ion-label>Actividad: {{datum?.actividad}} </ion-label>
+              <ion-label>Visitantes adicionales: {{datum?.extras}}</ion-label>
+              <div class="reservarbtn" (click)="goToRegistrar()">
+                <ion-label>
+                  Reservar otra vez</ion-label>
+              </div>
+            </div>
+            <div class="estado">
+              <ion-label>
+                Activo
+              </ion-label>
+            </div>
+          </ion-card-content>
+
+
+        </ion-card>
+      </ng-container>
+    </ion-card>
   </ng-container>
-</ion-card>
-</ng-container>
 </ion-content>

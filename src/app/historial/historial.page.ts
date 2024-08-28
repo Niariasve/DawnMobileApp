@@ -66,7 +66,12 @@ export class Historialpage {
           acc[month].push(item);
           return acc;
         }, {} as { [key: string]: Data[] });
+        
+        
+  
+
       }
+     
 
 
       goToRegistrar() {
