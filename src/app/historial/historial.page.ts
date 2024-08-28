@@ -83,10 +83,8 @@ export class Historialpage {
         fechaReserva.setHours(horas,minutos);
 
         const fechaActual = new Date();
-        const resta= (fechaReserva.getTime() - fechaActual.getTime()) / (1000 * 60 * 60);
-        console.log(resta);
-        console.log(fechaActual);
-        console.log(fechaReserva);
+        const resta= (fechaActual.getTime() - fechaReserva.getTime()) / (1000 * 60 * 60);
+
         if (resta <= 2 && resta >= 0) {
           return 'Activo';
         } else {
