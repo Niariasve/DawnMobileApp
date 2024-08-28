@@ -1,13 +1,53 @@
-ion-card-title {
-    font-size: 25px;
-    color: #175a44;
-    font-weight: bold;
-    padding: 10px;
-  }
+#titulo1 {
+  font-size: 18px; 
+  font-weight: bold; 
+  margin: 20px;
+
+  
+}
+
+#titulo2 {
+  font-size: 16px; 
+  font-weight: bold; 
+  margin-bottom: 8px; 
+}
+
+ion-content {
+  --ion-text-align: left; 
+  padding: 16px;
+}
 
 ion-label {
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
+  color: #000;
+  display: block;
+  font-size: 15px;
+}
+
+.reservarbtn { 
+  justify-content: flex-end;
+}
+
+.reservarbtn ion-label {
+  color: rgb(7, 97, 52); 
+  cursor: pointer; 
+  font-weight: bold;
+}
+
+#containerout{
+  border-top: 5px solid #5a756c;
+  margin-top: 30px;
+}
+
+
+#containerin{
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 0.5px solid rgb(155, 133, 133);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s; 
+}
+
+#containerin:hover{
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 
 }

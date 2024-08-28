@@ -14,6 +14,7 @@ import { arrowBack } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { HttpClientModule } from '@angular/common/http';
 import { ProviderService } from '../services/provider.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-historial',
@@ -28,8 +29,9 @@ import { ProviderService } from '../services/provider.service';
 })
 export class Historialpage {
     public data : Data[] = [];
+    public meses: { [key: string]: Data[]} = {};
 
-    constructor(private dataProvider: ProviderService , private formBuilder: FormBuilder) { }
+    constructor(private dataProvider: ProviderService , private formBuilder: FormBuilder,private router: Router) { }
 
 
     ngOnInit() {
@@ -40,13 +42,45 @@ export class Historialpage {
         this.dataProvider.getResponse().subscribe( response => {
           if( response != null) {
             this.data = Object.values(response) as Data[]
+            this.data.forEach(item => {
+              if (!(item.fecha instanceof Date)) {
+                item.fecha = new Date(item.fecha);
+              }
+            });
+
+            this.meses = this.ordenarPorMes(this.data);
+
           }
               
-        })
+        });
       }
 
 
-}
+
+      ordenarPorMes(data: Data[]): { [key: string]: Data[] } {
+        return data.reduce((acc, item) => {
+          const month = item.fecha.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }); // Formato 'mes año'
+          if (!acc[month]) {
+            acc[month] = [];
+          }
+          acc[month].push(item);
+          return acc;
+        }, {} as { [key: string]: Data[] });
+      }
+
+
+      goToRegistrar() {
+        this.router.navigate(['/registrar']);
+      }
+
+      
+
+
+
+      }
+
+      
+
 
 
 //no te olvides de la validacion del qr activo o no 
