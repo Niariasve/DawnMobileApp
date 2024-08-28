@@ -70,3 +70,13 @@ ion-card-content {
   font-size: 20px;
   
 }
+
+.estado.ion-label.activo {
+  color: green;
+  font-weight: bold;
+}
+
+.estado.ion-label.inactivo  {
+  color: red;
+  font-weight: bold;
+}

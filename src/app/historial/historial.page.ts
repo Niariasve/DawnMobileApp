@@ -43,6 +43,7 @@ export class Historialpage {
           if( response != null) {
             this.data = Object.values(response) as Data[]
             this.data.forEach(item => {
+
               if (!(item.fecha instanceof Date)) {
                 item.fecha = new Date(item.fecha);
               }
@@ -67,15 +68,32 @@ export class Historialpage {
           return acc;
         }, {} as { [key: string]: Data[] });
         
-        
-  
-
       }
      
 
 
       goToRegistrar() {
         this.router.navigate(['/registrar']);
+      }
+
+
+      validarEstado(fecha: Date, hora:string): string {
+        const fechaReserva = new Date(fecha);
+        const [horas, minutos] = hora.split(':').map(Number);
+        fechaReserva.setHours(horas,minutos);
+
+        const fechaActual = new Date();
+        const resta= (fechaReserva.getTime() - fechaActual.getTime()) / (1000 * 60 * 60);
+        console.log(resta);
+        console.log(fechaActual);
+        console.log(fechaReserva);
+        if (resta <= 2 && resta >= 0) {
+          return 'Activo';
+        } else {
+          return 'Inactivo';
+        }
+
+
       }
 
       
