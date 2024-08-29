@@ -68,15 +68,44 @@ ion-card-content {
 }
 .estado ion-label{
   font-size: 20px;
-  
 }
 
-.estado.ion-label.activo {
+.estado .Activo{
   color: green;
   font-weight: bold;
 }
 
-.estado.ion-label.inactivo  {
+.estado .Inactivo  {
   color: red;
   font-weight: bold;
+}
+
+
+#containerSort {
+  display: flex;
+  margin: 10px;
+
+}
+
+#containerSort ion-label {
+  margin: 10px;
+  color: #000;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.btnsort{
+  cursor: pointer; 
+  margin-left: 10px;
+  font-size: 13px;
+  background-color: white;
+  align-items: center;
+  border-radius: 10px;
+  border: 0.5px solid rgb(155, 133, 133);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  transition: box-shadow 0.3s;
+}
+
+.btnsort:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

@@ -22,86 +22,98 @@ import { Router } from '@angular/router';
   styleUrls: ['./historial.page.scss'],
   standalone: true,
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton, IonIcon,
-     IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent,
+    IonButtons, IonBackButton, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent,
     IonInput,
     IonLabel, IonList, IonItem, HttpClientModule, ReactiveFormsModule, IonGrid, IonRow, IonCol],
   providers: [ProviderService],
 })
 export class Historialpage {
-    public data : Data[] = [];
-    public meses: { [key: string]: Data[]} = {};
+  public data: Data[] = [];
+  public meses: { [key: string]: Data[] } = {};
+  constructor(private dataProvider: ProviderService, private formBuilder: FormBuilder, private router: Router) { }
 
-    constructor(private dataProvider: ProviderService , private formBuilder: FormBuilder,private router: Router) { }
 
+  ngOnInit() {
+    this.loadData(true)
+  }
 
-    ngOnInit() {
-        this.loadData()
-      }
-  
-      loadData() {
-        this.dataProvider.getResponse().subscribe( response => {
-          if( response != null) {
-            this.data = Object.values(response) as Data[]
-            this.data.forEach(item => {
+  loadData(estado: boolean) {
+    this.dataProvider.getResponse().subscribe(response => {
+      if (response != null) {
+        this.data = Object.values(response) as Data[]
+        this.data.forEach(item => {
 
-              if (!(item.fecha instanceof Date)) {
-                item.fecha = new Date(item.fecha);
-              }
-            });
-
-            this.meses = this.ordenarPorMes(this.data);
+          if (!(item.fecha instanceof Date)) {
+            item.fecha = new Date(item.fecha);
 
           }
-              
         });
-      }
+        this.meses = this.ordenarPorMes(this.data,estado);
+        console.log(this.meses)
 
-
-
-      ordenarPorMes(data: Data[]): { [key: string]: Data[] } {
-        return data.reduce((acc, item) => {
-          const month = item.fecha.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }); // Formato 'mes año'
-          if (!acc[month]) {
-            acc[month] = [];
-          }
-          acc[month].push(item);
-          return acc;
-        }, {} as { [key: string]: Data[] });
-        
-      }
-     
-
-
-      goToRegistrar() {
-        this.router.navigate(['/registrar']);
-      }
-
-
-      validarEstado(fecha: Date, hora:string): string {
-        const fechaReserva = new Date(fecha);
-        const [horas, minutos] = hora.split(':').map(Number);
-        fechaReserva.setHours(horas,minutos);
-
-        const fechaActual = new Date();
-        const resta= (fechaActual.getTime() - fechaReserva.getTime()) / (1000 * 60 * 60);
-
-        if (resta <= 2 && resta >= 0) {
-          return 'Activo';
-        } else {
-          return 'Inactivo';
-        }
-
+        Object.keys(this.meses).forEach((mes) => {
+          this.meses[mes] = this.ordenarPorDia(this.meses[mes], estado);
+        });
 
       }
 
-      
+    });
+  }
 
 
 
-      }
+  
 
-      
+  
+ordenarPorMes(data: Data[], ascendente: boolean): { [key: string]: Data[] } {
+    return data.reduce((acc, item) => {
+      //const yearMonth = item.fecha.toISOString().slice(0, 7); // Formato 'YYYY-MM'
+      const yearMonth = item.fecha.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' }); // Formato 'mes año'
+    if (!acc[yearMonth]) {
+      acc[yearMonth] = [];
+    }
+    acc[yearMonth].push(item);
+    return acc;
+    }, {} as { [key: string]: Data[] });
+  }
+  
+  ordenarPorDia(data: Data[], ascendente: boolean): Data[] {
+    return data.sort((a, b) => {
+      return ascendente ? a.fecha.getTime() - b.fecha.getTime() : b.fecha.getTime() - a.fecha.getTime();
+    });
+  }
 
 
+  goToRegistrar() {
+    this.router.navigate(['/registrar']);
+  }
 
-//no te olvides de la validacion del qr activo o no 
+
+  cambioRecientes() {
+    this.loadData(false);
+  }
+  cambioAntiguas() {
+    this.loadData(true);
+  }
+
+
+  validarEstado(fecha: Date, hora: string): string {
+    const fechaReserva = new Date(fecha);
+    const [horas, minutos] = hora.split(':').map(Number);
+    fechaReserva.setHours(horas, minutos);
+
+    const fechaActual = new Date();
+    const resta = (fechaActual.getTime() - fechaReserva.getTime()) / (1000 * 60 * 60);
+
+    if (resta <= 2 && resta >= 0) {
+      return 'Activo';
+    } else {
+      return 'Inactivo';
+    }
+  }
+
+
+  
+
+}
+
