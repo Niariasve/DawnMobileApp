@@ -23,26 +23,26 @@
     </ion-row>
 
     <ion-grid>
-      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
-        <ion-col size="4" class="ion-text-center">
+      <ion-row size="6" class="mt-6 ion-justify-content-center ion-align-items-center">
+        <ion-col size="2" class="ion-text-center">
           <div class="info">{{actividad}}</div>
         </ion-col>
-        <ion-col size="4" class="ion-text-center">
+        <ion-col size="2" class="ion-text-center">
           <div class="info">{{fechaHora.toLocaleDateString()}}</div>
         </ion-col>
-        <ion-col size="4" class="ion-text-center">
+        <ion-col size="2" class="ion-text-center">
           <div class="info">{{fechaHora.toLocaleTimeString()}}</div>
         </ion-col>
       </ion-row>
     
-      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
-        <ion-col size="4" class="ion-text-center">
+      <ion-row size="6" class="mt-6 ion-justify-content-center ion-align-items-center">
+        <ion-col size="2" class="ion-text-center">
           <div class="titleinfo">Actividad</div>
         </ion-col>
-        <ion-col size="4" class="ion-text-center">
+        <ion-col size="2" class="ion-text-center">
           <div class="titleinfo">Fecha</div>
         </ion-col>
-        <ion-col size="4" class="ion-text-center">
+        <ion-col size="2" class="ion-text-center">
           <div class="titleinfo">Hora</div>
         </ion-col>
       </ion-row>
@@ -76,31 +76,32 @@
       <ion-skeleton-text [animated]="true" style="width: 180px; height: 180px"></ion-skeleton-text>
     </ion-row>
 
-    <ion-grid>
-      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
-        <ion-col size="4" class="ion-text-center">
-          <div class="info"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <div class="info"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <div class="info"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
-        </ion-col>
-      </ion-row>
-    
-      <ion-row class="mt-6 ion-justify-content-center ion-align-items-center">
-        <ion-col size="4" class="ion-text-center">
-          <div class="titleinfo"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <div class="titleinfo"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
-        </ion-col>
-        <ion-col size="4" class="ion-text-center">
-          <div class="titleinfo"><ion-skeleton-text [animated]="true" style="width: 50px"></ion-skeleton-text></div>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <ion-grid >
+        <ion-row size="6" class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="2"  class="ion-justify-content-center ion-align-items-center">
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </ion-col>
+          <ion-col size="2" class="ion-justify-content-center ion-align-items-center">
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </ion-col>
+          <ion-col size="2" class="ion-justify-content-center ion-align-items-center">
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </ion-col>
+        </ion-row>>
+        <ion-row size="6" class="ion-align-items-center ion-justify-content-center">
+          <ion-col size="2" class="ion-justify-content-center ion-align-items-center">
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </ion-col>
+          <ion-col size="2"class="ion-justify-content-center ion-align-items-center">
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </ion-col>
+          <ion-col size="2"class="ion-justify-content-center ion-align-items-center">
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </ion-col>
+        </ion-row>
+
+
+      </ion-grid>
 
     }
 
