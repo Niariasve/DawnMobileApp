@@ -1,37 +1,33 @@
 h1 {
-    font-size: 24px; 
-    color: #ffffff;
-    margin-bottom: 10px; 
-  }
- 
-  h2 {
-    font-size: 22px; 
-    color: #ffffff;
-    margin-bottom: 22px; 
-  }
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-  h3 {
-    font-size: 20px; 
-    color: #ffffff;
-    margin-bottom: 20px; 
-  }
+h2 {
+  font-size: 22px;
+  margin-bottom: 22px;
+}
 
-  qrcode {
-    border: 5px solid #072e55; 
-    border-radius: 4px;
-    padding: 5px; 
-    background-color: #ffffff;     
-  }
+h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
 
-  .info{
-font-size:16px
+qrcode {
+  border: 5px solid #072e55;
+  border-radius: 4px;
+  padding: 5px;
+  background-color: #ffffff;
+}
 
-  }
-  .titleinfo{
-    font-size:12px;
-    color: #d4d4d4;
-  }
+.info {
+  font-size: 16px;
+}
 
-  .spacing {
-    margin-bottom: 20px; // Ajusta el espacio inferior entre filas
-  }
+.titleinfo {
+  font-size: 12px;
+}
+
+.spacing {
+  margin-bottom: 20px; // Ajusta el espacio inferior entre filas
+}
